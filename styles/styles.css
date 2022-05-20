@@ -1,0 +1,55 @@
+*{
+    background-color: rgb(28, 28, 87);
+    font-family: 'Anton', sans-serif;
+}
+p{
+    text-align: center;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    letter-spacing: 5px;
+    font-weight: bolder;
+}
+div{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 15px;
+}
+.green-button{
+    flex-basis: 12%;
+    background-color: green;
+    border: 5px solid black;
+    justify-content: left;
+    border-radius: 40px;
+    width: 150px;
+    height: 150px;
+}
+.red-button{
+    flex-basis: 12%;
+    background-color: red;
+    border: 5px solid black;
+    justify-content: right;
+    border-radius: 40px;
+    width: 150px;
+    height: 150px;
+}
+.yellow-button{
+    flex-basis: 12%;
+    background-color: yellow;
+    border: 5px solid black;
+    justify-content: right;
+    border-radius: 40px;
+    width: 150px;
+    height: 150px;
+}
+.blue-button{
+    flex-basis: 12%;
+    background-color: blue;
+    border: 5px solid black;
+    justify-content: right;
+    border-radius: 40px;
+    width: 150px;
+    height: 150px;
+}
