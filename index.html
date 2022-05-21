@@ -6,15 +6,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins&family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="script.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src=
+    "https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity=
+    "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
+            crossorigin="anonymous">
+            </script>
     <body>
-        <p>Press Any Key to Start</p>
-        <div>
-            <div class="green-button"></div>
-            <div class="red-button"></div>
+        <div class="element">
+            <p id="prompt">Press Any Key to Start</p>
         </div>
         <div>
-            <div class="yellow-button"></div>
-            <div class="blue-button"></div>
+            <div  class="btn green" id="green"></div>
+            <div  class="btn red" id="red"></div>
         </div>
+        <div>
+            <div class="btn yellow" id="yellow"></div>
+            <div class="btn blue" id="blue"></div>
+        </div>
+        <script>
+            $(document).ready(() => {
+                const lheight = $('.element').height();
+                setInterval(() => {
+                    $('p').fadeIn();
+                    $('p').fadeOut();
+      
+                    // The following code keeps the 
+                    // height of the div intact
+                    if ($('.element').height() !== 0) {
+                        $('.element').css('height', `${lheight}px`);
+                    }
+                }, 500);
+            });
+        </script>
     </body>
 </html>
+<!--References: -->
+<!--https://www.youtube.com/watch?v=ahGDFFAgKII-->
+<!--https://www.geeksforgeeks.org/how-to-make-an-element-flash-in-jquery/-->

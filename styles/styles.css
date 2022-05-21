@@ -17,39 +17,31 @@ div{
     flex-wrap: nowrap;
     margin: 15px;
 }
-.green-button{
+
+.btn{
+    border: 5px solid black;
+    border-radius: 40px;
+    width: 150px;
+    height: 150px;
     flex-basis: 12%;
+}
+.green{
     background-color: green;
-    border: 5px solid black;
     justify-content: left;
-    border-radius: 40px;
-    width: 150px;
-    height: 150px;
 }
-.red-button{
-    flex-basis: 12%;
+.red{
     background-color: red;
-    border: 5px solid black;
     justify-content: right;
-    border-radius: 40px;
-    width: 150px;
-    height: 150px;
 }
-.yellow-button{
-    flex-basis: 12%;
+.yellow{
     background-color: yellow;
-    border: 5px solid black;
-    justify-content: right;
-    border-radius: 40px;
-    width: 150px;
-    height: 150px;
+    justify-content: left;
 }
-.blue-button{
-    flex-basis: 12%;
+.blue{
     background-color: blue;
-    border: 5px solid black;
     justify-content: right;
-    border-radius: 40px;
-    width: 150px;
-    height: 150px;
+}
+.pressed{
+    box-shadow: 0 0 20px white;
+    background-color: grey;
 }
