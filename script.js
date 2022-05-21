@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded",function(){
     const colors = ['green','red','yellow','blue'];
     var gamePattern = [];
-    var userClickedPattern = [];
-
+    var userClickedPattern  = [];
+    var start = false
     
     //this function generates the next pattern 
     function nextSequence(){
@@ -13,8 +13,11 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     document.body.addEventListener('click', fn, true); 
     function fn(){
-        nextSequence()
-        console.log(gamePattern)
+        if (!start){
+            start = true
+            nextSequence()
+            console.log(gamePattern)
+        }
     }
     greenBtn = document.getElementsByClassName("btn green")[0];
     redBtn = document.getElementsByClassName("btn red")[0];
