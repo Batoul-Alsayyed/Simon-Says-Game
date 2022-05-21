@@ -1,25 +1,29 @@
 document.addEventListener("DOMContentLoaded",function(){
+    //code here
     const colors = ['green','red','yellow','blue'];
     var gamePattern = [];
     var userClickedPattern  = [];
+    var level = 0
     var start = false
-    
+
     //this function generates the next pattern 
     function nextSequence(){
         var randomNumber = Math.floor(Math.random()*4);
         var randomColor = colors[randomNumber];
         gamePattern.push(randomColor);
-        //console.log(gamePattern);
     }
-    document.body.addEventListener('click', fn, true); 
-    function fn(){
+
+
+    document.addEventListener('keypress', function(event) {
         if (!start){
             start = true
             nextSequence()
             showGamePattern()
+            document.getElementById("prompt").innerHTML = "Level "+level
             console.log(gamePattern)
         }
-    }
+    }); 
+
     greenBtn = document.getElementsByClassName("btn green")[0];
     redBtn = document.getElementsByClassName("btn red")[0];
     yellowBtn = document.getElementsByClassName("btn yellow")[0];
@@ -29,35 +33,81 @@ document.addEventListener("DOMContentLoaded",function(){
     redBtn.onclick = function () {redOnClick()};
     yellowBtn.onclick = function () {yellowOnClick()};
     blueBtn.onclick = function () {blueOnClick()};
+
+
     function greenOnClick(){
-        PlayAudio('green');
-        addPattern('green');
         var userClickedButtonColor = 'green'
+        userClickedPattern.push(userClickedButtonColor)
         animatePress(userClickedButtonColor)
+        PlayAudio(userClickedButtonColor)
+        console.log(userClickedButtonColor)
+        if (subList() && userClickedPattern.length === gamePattern.length){
+            level++
+            userClickedPattern = []
+            nextSequence()
+            showGamePattern()
+            document.getElementById("prompt").innerHTML = "Level "+level
+            console.log(gamePattern)
+        }
+        else if (!subList()){
+            gameOver()
+        }
     }
     function redOnClick(){
-        PlayAudio('red');
-        addPattern('red');
         var userClickedButtonColor = 'red'
+        userClickedPattern.push(userClickedButtonColor)
         animatePress(userClickedButtonColor)
+        PlayAudio(userClickedButtonColor)
+        console.log(userClickedButtonColor)
+        if (subList() && userClickedPattern.length === gamePattern.length){
+            level++
+            userClickedPattern = []
+            nextSequence()
+            showGamePattern()
+            document.getElementById("prompt").innerHTML = "Level "+level
+            console.log(gamePattern)
+        }
+        else if (!subList()){
+            gameOver()
+        }
     }
     function yellowOnClick(){
-        PlayAudio('yellow')
-        addPattern('yellow')
         var userClickedButtonColor = 'yellow'
+        userClickedPattern.push(userClickedButtonColor)
         animatePress(userClickedButtonColor)
+        PlayAudio(userClickedButtonColor)
+        console.log(userClickedButtonColor)
+        if (subList() && userClickedPattern.length === gamePattern.length){
+            level++
+            userClickedPattern = []
+            nextSequence()
+            showGamePattern()
+            document.getElementById("prompt").innerHTML = "Level "+level
+            console.log(gamePattern)
+        }
+        else if (!subList()){
+            gameOver()
+        }
     }
     function blueOnClick(){
-        PlayAudio('blue');
-        addPattern('blue')
         var userClickedButtonColor = 'blue'
+        userClickedPattern.push(userClickedButtonColor)
         animatePress(userClickedButtonColor)
+        PlayAudio(userClickedButtonColor)
+        console.log(userClickedButtonColor)
+        if (subList() && userClickedPattern.length === gamePattern.length){
+            level++
+            userClickedPattern = []
+            nextSequence()
+            showGamePattern()
+            document.getElementById("prompt").innerHTML = "Level "+level
+            console.log(gamePattern)
+        }
+        else if (!subList()){
+            gameOver()
+        }
     }
-    //this function adds the user chosen pattern to the userClickedPattern array
-    function addPattern(color){
-        userClickedPattern.push(color);
-        console.log(userClickedPattern);
-    }
+    
     function animatePress(color){
         $("#"+color).addClass("pressed")
 
@@ -69,10 +119,13 @@ document.addEventListener("DOMContentLoaded",function(){
         src = 'assets/sounds/sounds/';  
         var audio = new Audio (src+color+'.mp3');
         audio.play();
+        console.log("Clicked!")
     }
+
     function showGamePattern(){
         let start = 0
         let pattern = setInterval(thisfunction, 1000)
+
         function thisfunction(){
             if (start < gamePattern.length){
                 var currentColor = gamePattern[start]
@@ -85,4 +138,32 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         }
     }
-});
+    
+    function subList(){
+        for (var i=0; i<userClickedPattern.length; i++){
+            if (userClickedPattern[i] != gamePattern[i]) return false
+        }
+        return true
+    }
+
+    // To reset the game when its game over
+    function gameOver() {
+        level = 0
+        userClickedPattern = []
+        gamePattern = []
+        start = false
+  
+        $('body').addClass("lose");
+
+        document.getElementById("prompt").innerHTML = "Game Over!";
+        
+  
+        setTimeout(function() {
+          $('body').removeClass("lose")
+
+          document.getElementById("prompt").innerHTML = "Press any key to restart";
+        }, 1000)
+      }
+
+
+})
