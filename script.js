@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded",function(){
         if (!start){
             start = true
             nextSequence()
+            showGamePattern()
             console.log(gamePattern)
         }
     }
@@ -68,5 +69,20 @@ document.addEventListener("DOMContentLoaded",function(){
         src = 'assets/sounds/sounds/';  
         var audio = new Audio (src+color+'.mp3');
         audio.play();
+    }
+    function showGamePattern(){
+        let start = 0
+        let pattern = setInterval(thisfunction, 1000)
+        function thisfunction(){
+            if (start < gamePattern.length){
+                var currentColor = gamePattern[start]
+                animatePress(currentColor)
+                PlayAudio(currentColor)
+                start++
+            }
+            else{
+                clearInterval(pattern)
+            }
+        }
     }
 });
