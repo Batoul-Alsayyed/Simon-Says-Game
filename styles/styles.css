@@ -19,6 +19,7 @@ div{
 }
 
 .btn{
+    margin-top: 2%;
     border: 5px solid black;
     border-radius: 40px;
     width: 150px;
@@ -44,4 +45,12 @@ div{
 .pressed{
     box-shadow: 0 0 20px white;
     background-color: grey;
+}
+@media (max-width: 600px) {
+    .btn{
+        flex-basis: 25%;
+    }
+    p{
+        font-size: 30px;;
+    }
 }
