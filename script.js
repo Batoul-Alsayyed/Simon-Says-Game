@@ -24,29 +24,25 @@ document.addEventListener("DOMContentLoaded",function(){
     yellowBtn.onclick = function () {yellowOnClick()};
     blueBtn.onclick = function () {blueOnClick()};
     function greenOnClick(){
-        var audio = new Audio('assets/sounds/sounds/green.mp3');
-        audio.play();
-        addPattern('green')
+        PlayAudio('green');
+        addPattern('green');
         var userClickedButtonColor = 'green'
         animatePress(userClickedButtonColor)
     }
     function redOnClick(){
-        var audio = new Audio('assets/sounds/sounds/red.mp3');
-        audio.play();
-        addPattern('red')
+        PlayAudio('red');
+        addPattern('red');
         var userClickedButtonColor = 'red'
         animatePress(userClickedButtonColor)
     }
     function yellowOnClick(){
-        var audio = new Audio('assets/sounds/sounds/yellow.mp3');
-        audio.play();
+        PlayAudio('yellow')
         addPattern('yellow')
         var userClickedButtonColor = 'yellow'
         animatePress(userClickedButtonColor)
     }
     function blueOnClick(){
-        var audio = new Audio('assets/sounds/sounds/blue.mp3');
-        audio.play();
+        PlayAudio('blue');
         addPattern('blue')
         var userClickedButtonColor = 'blue'
         animatePress(userClickedButtonColor)
@@ -62,5 +58,10 @@ document.addEventListener("DOMContentLoaded",function(){
         setTimeout(function(){
             $("#" + color).removeClass("pressed")
         }, 100)
+    }
+    function PlayAudio(color){
+        src = 'assets/sounds/sounds/';  
+        var audio = new Audio (src+color+'.mp3');
+        audio.play();
     }
 });
