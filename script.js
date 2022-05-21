@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded",function(){
         var randomNumber = Math.floor(Math.random()*4);
         var randomColor = colors[randomNumber];
         gamePattern.push(randomColor);
-        console.log(gamePattern)
     }
 
 
@@ -161,18 +160,12 @@ document.addEventListener("DOMContentLoaded",function(){
         userClickedPattern = []
         gamePattern = []
         start = false
-  
-        $('body').addClass("lose");
-
-        document.getElementById("prompt").innerHTML = "Game Over!";
-        
-  
+        document.getElementById("prompt").innerHTML = "Game Over!";  
         setTimeout(function() {
-          $('body').removeClass("lose")
-
           document.getElementById("prompt").innerHTML = "Press any key to restart";
         }, 1000)
       }
+
     function gameWin(){
         level = 0
         userClickedPattern = []
@@ -183,6 +176,5 @@ document.addEventListener("DOMContentLoaded",function(){
             document.getElementById("prompt").innerHTML = "Press any key to restart"
         }, 1000)
     }  
-
 
 })
