@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded",function(){
     var userClickedPattern  = [];
     var level = 0
     var start = false
-
+    var totalLevels = 10
     //this function generates the next pattern 
     function nextSequence(){
         var randomNumber = Math.floor(Math.random()*4);
         var randomColor = colors[randomNumber];
         gamePattern.push(randomColor);
+        console.log(gamePattern)
     }
 
 
@@ -51,6 +52,8 @@ document.addEventListener("DOMContentLoaded",function(){
         }
         else if (!subList()){
             gameOver()
+        }else if (level==totalLevels){
+            gameWin()
         }
     }
     function redOnClick(){
@@ -69,6 +72,8 @@ document.addEventListener("DOMContentLoaded",function(){
         }
         else if (!subList()){
             gameOver()
+        }else if (level==totalLevels){
+            gameWin()
         }
     }
     function yellowOnClick(){
@@ -87,6 +92,8 @@ document.addEventListener("DOMContentLoaded",function(){
         }
         else if (!subList()){
             gameOver()
+        }else if (level==totalLevels){
+            gameWin()
         }
     }
     function blueOnClick(){
@@ -105,6 +112,8 @@ document.addEventListener("DOMContentLoaded",function(){
         }
         else if (!subList()){
             gameOver()
+        }else if (level==totalLevels){
+            gameWin()
         }
     }
     
@@ -164,6 +173,16 @@ document.addEventListener("DOMContentLoaded",function(){
           document.getElementById("prompt").innerHTML = "Press any key to restart";
         }, 1000)
       }
+    function gameWin(){
+        level = 0
+        userClickedPattern = []
+        gamePattern = []
+        start = false
+        document.getElementById("prompt").innerHTML = "Congratulations You won !"
+        setTimeout(function(){
+            document.getElementById("prompt").innerHTML = "Press any key to restart"
+        }, 1000)
+    }  
 
 
 })
